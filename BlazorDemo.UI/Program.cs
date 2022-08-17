@@ -1,11 +1,20 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using BlazorDemo.Domain.DataAccess;
+using BlazorDemo.Domain.Models;
+using BlazorDemo.Repository.Interfaces;
+using BlazorDemo.Repository.Repositories;
+using BlazorDemo.Service.Interfaces;
+using BlazorDemo.Service.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+var ConnectionString = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<BlazorDemoContext>(options => options.UseSqlServer(ConnectionString));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ICustomeService<Customer>, CustomerService>();
 
 var app = builder.Build();
 

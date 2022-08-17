@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BlazorDemo.Domain\BlazorDemo.Domain.csproj" />
+    <ProjectReference Include="..\BlazorDemo.Repository\BlazorDemo.Repository.csproj" />
     <ProjectReference Include="..\BlazorDemo.Service\BlazorDemo.Service.csproj" />
   </ItemGroup>
 

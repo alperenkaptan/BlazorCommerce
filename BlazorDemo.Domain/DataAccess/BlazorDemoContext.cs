@@ -5,9 +5,9 @@ namespace BlazorDemo.Domain.DataAccess
 {
     public class BlazorDemoContext : DbContext
     {
-        public BlazorDemoContext(DbContextOptions options) : base(options)
+        public BlazorDemoContext (DbContextOptions options) : base(options)
         {
-
+            
         }
 
         public DbSet<Customer> Customer { get; set; }
